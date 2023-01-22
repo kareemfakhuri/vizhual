@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct summeryView: View {
+    @State private var lifetimeLive = false
     var body: some View {
         ScrollView{
             VStack(alignment: .center) {                    VStack(alignment: .leading){
@@ -26,8 +27,8 @@ struct summeryView: View {
                             .font(.title)
                             .fontWeight(.bold)
                         Spacer()
-                        Button {
-                            
+                        NavigationLink {
+                            tableView()
                         } label: {
                             Text("View table")
                         }
@@ -37,10 +38,17 @@ struct summeryView: View {
                 }
                 .modifier(CardModifier())
                 
-                
-                
                 VStack(alignment: .leading){
-                    MyLineView(title: "Average Life")
+                    HStack(alignment: .center){
+                        Text("Average lifetime")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Spacer()
+                        Toggle("Live", isOn: $lifetimeLive)
+                            .toggleStyle(.button)
+                                       .tint(.red)
+                    }
+                    MyLineView(live: lifetimeLive)
                 }
                 .modifier(CardModifier())
             }

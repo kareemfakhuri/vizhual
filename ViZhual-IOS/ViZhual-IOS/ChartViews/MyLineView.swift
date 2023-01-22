@@ -10,16 +10,23 @@ import SwiftUICharts
 
 struct MyLineView: View {
     var title: String?
-    var legend: String?
+    var legend: String?    
+    var live: Bool = false
     
     @State var demoData: [Double] = []
     @State var count = 0
+    
     let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
     
     var body: some View {
             VStack {
-                LineView(data: demoData, title: title, legend: legend, style: Styles.lineChartStyleOne)
-                    .frame(height: 350)
+                if !live{
+                    LineView(data: demoData, title: title, legend: legend, style: Styles.lineChartStyleOne)
+                        .frame(height: 350)
+                }else{
+                    LineView(data: demoData.count > 20 ? demoData.suffix(20) : demoData, title: title, legend: legend, style: Styles.lineChartStyleOne)
+                        .frame(height: 350)
+                }
 
             }
             .onReceive(timer) { _ in

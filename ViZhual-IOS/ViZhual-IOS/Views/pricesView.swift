@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct pricesView: View {
-    @State private var selectedStrength = "Mild"
     let strengths = ["Mild", "Medium", "Mature"]
+    
+    @State private var selectedStrength = "Mild"
+    @State private var lifetimeLive = false
     
     var body: some View {
         VStack(alignment: .center){
@@ -20,7 +22,16 @@ struct pricesView: View {
             }
             
             VStack(alignment: .leading){
-                MyLineView(title: selectedStrength)
+                HStack(alignment: .center){
+                    Text(selectedStrength)
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Toggle("Live", isOn: $lifetimeLive)
+                        .toggleStyle(.button)
+                                   .tint(.red)
+                }
+                MyLineView(live: lifetimeLive)
             }
             .modifier(CardModifier())
         }
