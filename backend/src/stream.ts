@@ -54,4 +54,7 @@ export async function streamMessages(callback: (message: Message) => void | Prom
         // Because time elapsed might be (likely is) longer than 1ms due to execution time
         pointer = pointer + ((Date.now() - startTime) * speedFactor);
     }
+
+    // Loop through results again
+    streamMessages(callback, speedFactor);
 }
