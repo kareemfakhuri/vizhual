@@ -1,4 +1,4 @@
-import { BLOCK_COUNT, BLOCK_LENGTH, DELETION_REST, SAVE_REST } from "./constants";
+import { BLOCK_COUNT, BLOCK_LENGTH, DELETION_REST, SAVE_REST, VALIDITY_DURATION } from "./constants";
 import { deleteStaleMessages, saveMessages } from "./storage";
 import { AbnormailityType, Block, Message, MessageType, Order, OrderStatus } from "./types";
 import { milliToNano, nanoToMilli } from "./utils/conversion-utils";
@@ -188,7 +188,7 @@ function tick() {
     // Step 2: Clear executed orders after enough time has passed
     Array.from(executedOrders.values()).forEach((order) => {
         const timeElapsed = Date.now() - nanoToMilli(order.timestamp);
-        if (timeElapsed > BLOCK_LENGTH) {
+        if (timeElapsed > VALIDITY_DURATION) {
             executedOrders.delete(order.orderID);
         }
     });
