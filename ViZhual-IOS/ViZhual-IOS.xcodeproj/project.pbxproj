@@ -27,6 +27,8 @@
 		BB8F6AC8297D263500537413 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AC7297D263500537413 /* BannerView.swift */; };
 		BB8F6ACB297D38D900537413 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6ACA297D38D900537413 /* Models.swift */; };
 		BB8F6ACD297D70F100537413 /* MultiLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6ACC297D70F100537413 /* MultiLineChartView.swift */; };
+		BB8F6C44297D81A600537413 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6C43297D81A600537413 /* BarChartView.swift */; };
+		BB8F6C47297D905600537413 /* SwiftPieChart in Frameworks */ = {isa = PBXBuildFile; productRef = BB8F6C46297D905600537413 /* SwiftPieChart */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,7 @@
 		BB8F6AC7297D263500537413 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		BB8F6ACA297D38D900537413 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		BB8F6ACC297D70F100537413 /* MultiLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineChartView.swift; sourceTree = "<group>"; };
+		BB8F6C43297D81A600537413 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB8F6C47297D905600537413 /* SwiftPieChart in Frameworks */,
 				BB8F6ABE297CCC5900537413 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,6 +125,7 @@
 			children = (
 				BB8F6AB7297CCBE000537413 /* MyLineView.swift */,
 				BB8F6AB6297CCBE000537413 /* MyPieChart.swift */,
+				BB8F6C43297D81A600537413 /* BarChartView.swift */,
 				BB8F6AB4297CCBE000537413 /* PieChartView.swift */,
 				BB8F6AB5297CCBE000537413 /* PieSliceView.swift */,
 				BB8F6ACC297D70F100537413 /* MultiLineChartView.swift */,
@@ -156,6 +161,7 @@
 			name = "ViZhual-IOS";
 			packageProductDependencies = (
 				BB8F6ABD297CCC5900537413 /* SwiftUICharts */,
+				BB8F6C46297D905600537413 /* SwiftPieChart */,
 			);
 			productName = "ViZhual-IOS";
 			productReference = BB8F6AA3297CCB8200537413 /* ViZhual-IOS.app */;
@@ -187,6 +193,7 @@
 			mainGroup = BB8F6A9A297CCB8200537413;
 			packageReferences = (
 				BB8F6ABC297CCC5900537413 /* XCRemoteSwiftPackageReference "ChartView" */,
+				BB8F6C45297D905600537413 /* XCRemoteSwiftPackageReference "SwiftPieChart" */,
 			);
 			productRefGroup = BB8F6AA4297CCB8200537413 /* Products */;
 			projectDirPath = "";
@@ -222,6 +229,7 @@
 				BB8F6ABA297CCBE000537413 /* MyPieChart.swift in Sources */,
 				BB8F6AA9297CCB8200537413 /* ContentView.swift in Sources */,
 				902D3104297CD52900E9FF6A /* appModel.swift in Sources */,
+				BB8F6C44297D81A600537413 /* BarChartView.swift in Sources */,
 				902D30FE297CCC4100E9FF6A /* summeryView.swift in Sources */,
 				BB8F6AC1297CF94A00537413 /* PasswordManagerView.swift in Sources */,
 				BB8F6AC5297D0F1100537413 /* PasswordGenerator.swift in Sources */,
@@ -443,6 +451,14 @@
 				minimumVersion = 1.5.5;
 			};
 		};
+		BB8F6C45297D905600537413 /* XCRemoteSwiftPackageReference "SwiftPieChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ilamanov/SwiftPieChart.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -450,6 +466,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BB8F6ABC297CCC5900537413 /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		BB8F6C46297D905600537413 /* SwiftPieChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB8F6C45297D905600537413 /* XCRemoteSwiftPackageReference "SwiftPieChart" */;
+			productName = SwiftPieChart;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

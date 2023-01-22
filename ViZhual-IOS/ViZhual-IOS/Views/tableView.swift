@@ -54,12 +54,12 @@ struct tableView: View {
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30, maxHeight: 30, alignment: .center)
                             .background(Color.white)
                             .cornerRadius(8)
-                        Text(item.abnormailityType.rawValue)
+                        Text(item.abnormailityType.value)
                             .minimumScaleFactor(0.9)
                             .multilineTextAlignment(.center)
                             .padding()
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30, maxHeight: 30, alignment: .center)
-                            .background(Color.white)
+                            .background(item.abnormailityType.color)
                             .cornerRadius(8)
                     }
                 }

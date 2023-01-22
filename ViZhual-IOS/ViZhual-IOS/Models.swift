@@ -5,7 +5,7 @@
 //  Created by Alireza Toghiani on 1/22/23.
 //
 
-import Foundation
+import SwiftUI
 
 // Codable model
 enum OrderStatus: String, Codable {
@@ -19,6 +19,32 @@ enum AbnormailityType: String, Codable {
     case NoNewOrderRequest = "NoNewOrderRequest"
     case MultipleExecutions = "MultipleExecutions"
     case CancelledAfterExecution = "CancelledAfterExecution"
+    
+    var value: String {
+        switch self {
+        case .None:
+            return "?"
+        case .NoNewOrderRequest:
+            return "No Request"
+        case .MultipleExecutions:
+            return "Duplicate Trade"
+        case .CancelledAfterExecution:
+            return "Cancel After Trade"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .None:
+            return .gray
+        case .NoNewOrderRequest:
+            return .orange
+        case .MultipleExecutions:
+            return .red
+        case .CancelledAfterExecution:
+            return .blue
+        }
+    }
 }
 
 struct Order: Codable {
