@@ -109,6 +109,7 @@ export async function processMessage(message: Message): Promise<void> {
                     life: Date.now() - nanoToMilli(order.timestamp),
                 });
 
+                executedOrders.set(orderID, order);
                 unresolvedOrders.delete(orderID);
             }
 
