@@ -1,7 +1,9 @@
+import { Message } from "./types";
 import { MySQLPool } from "./utils/mysql-utils";
 
 let pool: MySQLPool;
 
+const TABLE_NAME = "messages";
 const TABLE_SIGNATURE = `order_id VARCHAR(255) NOT NULL,
 direction VARCHAR(255) NOT NULL,
 type VARCHAR(255) NOT NULL,
@@ -23,6 +25,19 @@ export async function setupMySQL(
   await setupTables();
 }
 
-// TODO
 async function setupTables(): Promise<void> {
+    pool.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (${TABLE_SIGNATURE});`);
+}
+
+export async function saveMessages(activity: Message): Promise<void> {
+    await pool.writeValues(TABLE_NAME, [activity]);
+}
+
+export async function getMessages(orderID: string): Promise<Message[]> {
+    const result = await pool.readValues(TABLE_NAME, {
+        order_id: orderID
+    },
+    ["*"]);
+
+    console.log(result);
 }

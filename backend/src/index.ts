@@ -31,8 +31,10 @@ if (
 }
 
 import { setupMySQL } from "./storage";
+import * as stream from "./stream";
 
 async function main () {
+    stream.initMaster();
     await setupMySQL(
         MYSQL_HOST!,
         +MYSQL_PORT!,
@@ -41,5 +43,10 @@ async function main () {
         MYSQL_PASSWORD!,
         +MYSQL_CONN_LIMIT!
     );
+
+    let i = 1;
+    stream.streamMessages((message) => {
+        console.log(i++);
+    });
 }
-main()
+main();
