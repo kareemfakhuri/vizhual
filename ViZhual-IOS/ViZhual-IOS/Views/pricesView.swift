@@ -11,7 +11,7 @@ struct pricesView: View {
     let strengths = ["Mild", "Medium", "Mature"]
     
     @State private var selectedStrength = "Mild"
-    @State private var lifetimeLive = false
+    @State private var priceLive = true
     
     var body: some View {
         VStack(alignment: .center){
@@ -27,11 +27,11 @@ struct pricesView: View {
                         .font(.title)
                         .fontWeight(.bold)
                     Spacer()
-                    Toggle("Live", isOn: $lifetimeLive)
+                    Toggle("Live", isOn: $priceLive)
                         .toggleStyle(.button)
                                    .tint(.red)
                 }
-                MyLineView(live: lifetimeLive)
+                MyLineView(live: priceLive)
             }
             .modifier(CardModifier())
         }

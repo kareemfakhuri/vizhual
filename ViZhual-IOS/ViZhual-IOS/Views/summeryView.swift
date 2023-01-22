@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct summeryView: View {
-    @State private var lifetimeLive = false
+    @State private var lifetimeLive = true
     var body: some View {
         ScrollView{
             VStack(alignment: .center) {                    VStack(alignment: .leading){

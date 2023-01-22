@@ -31,11 +31,13 @@ struct MyLineView: View {
             }
             .onReceive(timer) { _ in
                 self.count += 1
-                demoData.append(Double.random(in: 1...20))
+//                if live {
+//                    if demoData.count > 20 {
+//                        demoData.removeFirst()
+//                    }
+//                }
+                    demoData.append(Double.random(in: 1...20))
                 
-                if count > 240 {
-                    timer.upstream.connect().cancel()
-                }
             }
     }
 }
