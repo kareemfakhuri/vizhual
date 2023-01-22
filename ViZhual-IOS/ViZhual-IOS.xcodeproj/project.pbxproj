@@ -21,6 +21,8 @@
 		BB8F6ABA297CCBE000537413 /* MyPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB6297CCBE000537413 /* MyPieChart.swift */; };
 		BB8F6ABB297CCBE000537413 /* MyLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB7297CCBE000537413 /* MyLineView.swift */; };
 		BB8F6ABE297CCC5900537413 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = BB8F6ABD297CCC5900537413 /* SwiftUICharts */; };
+		BB8F6AC1297CF94A00537413 /* PasswordManagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AC0297CF94A00537413 /* PasswordManagerView.swift */; };
+		BB8F6AC3297CFDDD00537413 /* common-passwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB8F6AC2297CFDDD00537413 /* common-passwords.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		BB8F6AB5297CCBE000537413 /* PieSliceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieSliceView.swift; sourceTree = "<group>"; };
 		BB8F6AB6297CCBE000537413 /* MyPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPieChart.swift; sourceTree = "<group>"; };
 		BB8F6AB7297CCBE000537413 /* MyLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLineView.swift; sourceTree = "<group>"; };
+		BB8F6AC0297CF94A00537413 /* PasswordManagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagerView.swift; sourceTree = "<group>"; };
+		BB8F6AC2297CFDDD00537413 /* common-passwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "common-passwords.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 			children = (
 				BB8F6AA6297CCB8200537413 /* ViZhual_IOSApp.swift */,
 				BB8F6AA8297CCB8200537413 /* ContentView.swift */,
+				BB8F6AC2297CFDDD00537413 /* common-passwords.txt */,
+				BB8F6AC0297CF94A00537413 /* PasswordManagerView.swift */,
 				BB8F6ABF297CCD7C00537413 /* ChartViews */,
 				902D30FF297CCC4500E9FF6A /* Views */,
 				BB8F6AAA297CCB8300537413 /* Assets.xcassets */,
@@ -176,6 +182,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB8F6AC3297CFDDD00537413 /* common-passwords.txt in Resources */,
 				BB8F6AAE297CCB8300537413 /* Preview Assets.xcassets in Resources */,
 				BB8F6AAB297CCB8300537413 /* Assets.xcassets in Resources */,
 			);
@@ -194,6 +201,7 @@
 				BB8F6AA9297CCB8200537413 /* ContentView.swift in Sources */,
 				902D3104297CD52900E9FF6A /* appModel.swift in Sources */,
 				902D30FE297CCC4100E9FF6A /* summeryView.swift in Sources */,
+				BB8F6AC1297CF94A00537413 /* PasswordManagerView.swift in Sources */,
 				BB8F6AB9297CCBE000537413 /* PieSliceView.swift in Sources */,
 				902D30FD297CCC4100E9FF6A /* tableView.swift in Sources */,
 				BB8F6ABB297CCBE000537413 /* MyLineView.swift in Sources */,

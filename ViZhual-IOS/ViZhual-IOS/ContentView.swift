@@ -20,6 +20,11 @@ struct ContentView: View {
                     .tabItem {
                         Label("Prices", systemImage: "dollarsign.circle.fill")
                     }
+                
+                pricesView()
+                    .tabItem {
+                        Label("Security", systemImage: "key.icloud")
+                    }
             }
             .navigationViewStyle(.automatic)
             .accentColor(.red)
