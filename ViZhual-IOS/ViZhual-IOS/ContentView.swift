@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            
             TabView{
                 summeryView()
                     .tabItem {
@@ -22,6 +21,7 @@ struct ContentView: View {
                         Label("Prices", systemImage: "dollarsign.circle.fill")
                     }
             }
+            .navigationViewStyle(.automatic)
             .accentColor(.red)
             .navigationTitle("Vizhual")
         }

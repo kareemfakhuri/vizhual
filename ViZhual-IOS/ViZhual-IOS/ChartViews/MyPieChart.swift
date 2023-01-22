@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct MyPieChart: View {
     @State var demoData: [Double] = [8, 23]
@@ -17,11 +18,12 @@ struct MyPieChart: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             PieChartView(
                 values: demoData,
                 names: ["S1", "S2"],
                 formatter: {value in String(format: "%.2f", value)})
+            .frame(height: 300,alignment: .center)
          }
         .onReceive(timer) { _ in
             self.count += 1

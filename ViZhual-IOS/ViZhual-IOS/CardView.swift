@@ -10,7 +10,6 @@ import SwiftUI
 struct CardModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .clipped()
             .padding(.vertical,6)
             .padding(.horizontal,6)
             .background(.white)

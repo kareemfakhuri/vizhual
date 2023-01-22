@@ -9,32 +9,43 @@ import SwiftUI
 
 struct summeryView: View {
     var body: some View {
-        VStack(alignment: .center) {
-            HStack(alignment: .center) {
+        ScrollView{
+            VStack(alignment: .center) {                    VStack(alignment: .leading){
+                Text("Summery")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    MyPieChart()
+                
+            }
+            .modifier(CardModifier())
+                
+                
                 VStack(alignment: .leading){
-                    Text("Result")
-                        .font(.title2)
-                        .fontWeight(.semibold)
+                    HStack(alignment: .center){
+                        Text("Abnormal")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            Text("View table")
+                        }
+                        
+                    }
                     MyPieChart()
                 }
                 .modifier(CardModifier())
                 
+                
+                
                 VStack(alignment: .leading){
-                    Text("Abnormal")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    MyPieChart()
+                    MyLineView(title: "Average Life")
                 }
                 .modifier(CardModifier())
             }
-//            .frame(height: UIScreen.main.bounds.height)
-            
-            VStack(alignment: .leading){
-                MyLineView(title: "Ave. life")
-            }
-            .modifier(CardModifier())
+            .padding()
         }
-        .padding()
     }
 }
 

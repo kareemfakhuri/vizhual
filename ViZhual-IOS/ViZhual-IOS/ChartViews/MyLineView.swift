@@ -19,6 +19,8 @@ struct MyLineView: View {
     var body: some View {
             VStack {
                 LineView(data: demoData, title: title, legend: legend, style: Styles.lineChartStyleOne)
+                    .frame(height: 350)
+
             }
             .onReceive(timer) { _ in
                 self.count += 1
