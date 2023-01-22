@@ -11,6 +11,10 @@
 		BB8F6AA9297CCB8200537413 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AA8297CCB8200537413 /* ContentView.swift */; };
 		BB8F6AAB297CCB8300537413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB8F6AAA297CCB8300537413 /* Assets.xcassets */; };
 		BB8F6AAE297CCB8300537413 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB8F6AAD297CCB8300537413 /* Preview Assets.xcassets */; };
+		BB8F6AB8297CCBE000537413 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB4297CCBE000537413 /* PieChartView.swift */; };
+		BB8F6AB9297CCBE000537413 /* PieSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB5297CCBE000537413 /* PieSliceView.swift */; };
+		BB8F6ABA297CCBE000537413 /* MyPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB6297CCBE000537413 /* MyPieChart.swift */; };
+		BB8F6ABB297CCBE000537413 /* MyLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB7297CCBE000537413 /* MyLineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		BB8F6AA8297CCB8200537413 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB8F6AAA297CCB8300537413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB8F6AAD297CCB8300537413 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BB8F6AB4297CCBE000537413 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		BB8F6AB5297CCBE000537413 /* PieSliceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieSliceView.swift; sourceTree = "<group>"; };
+		BB8F6AB6297CCBE000537413 /* MyPieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPieChart.swift; sourceTree = "<group>"; };
+		BB8F6AB7297CCBE000537413 /* MyLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,10 @@
 			children = (
 				BB8F6AA6297CCB8200537413 /* ViZhual_IOSApp.swift */,
 				BB8F6AA8297CCB8200537413 /* ContentView.swift */,
+				BB8F6AB7297CCBE000537413 /* MyLineView.swift */,
+				BB8F6AB6297CCBE000537413 /* MyPieChart.swift */,
+				BB8F6AB4297CCBE000537413 /* PieChartView.swift */,
+				BB8F6AB5297CCBE000537413 /* PieSliceView.swift */,
 				BB8F6AAA297CCB8300537413 /* Assets.xcassets */,
 				BB8F6AAC297CCB8300537413 /* Preview Content */,
 			);
@@ -137,7 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB8F6AB8297CCBE000537413 /* PieChartView.swift in Sources */,
+				BB8F6ABA297CCBE000537413 /* MyPieChart.swift in Sources */,
 				BB8F6AA9297CCB8200537413 /* ContentView.swift in Sources */,
+				BB8F6AB9297CCBE000537413 /* PieSliceView.swift in Sources */,
+				BB8F6ABB297CCBE000537413 /* MyLineView.swift in Sources */,
 				BB8F6AA7297CCB8200537413 /* ViZhual_IOSApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
