@@ -21,7 +21,7 @@ struct ContentView: View {
                         Label("Prices", systemImage: "dollarsign.circle.fill")
                     }
                 
-                pricesView()
+                PasswordManagerView()
                     .tabItem {
                         Label("Security", systemImage: "key.icloud")
                     }
