@@ -32,7 +32,8 @@ if (
 
 import { setupMySQL } from "./storage";
 import { initMaster, streamMessages } from "./stream";
-import { autoDeleteStaleMessages, loadMessages, registerMessage } from "./registry";
+import { autoDeleteStaleMessages, loadMessages, processMessage } from "./registry";
+import { startServer } from "./server";
 
 async function main () {
     await setupMySQL(
@@ -49,8 +50,10 @@ async function main () {
     await autoDeleteStaleMessages();
     await loadMessages();
 
+    startServer();
+
     // Fake stream logic
     initMaster();
-    streamMessages(registerMessage);
+    streamMessages(processMessage);
 }
 main();

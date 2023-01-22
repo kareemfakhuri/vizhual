@@ -28,7 +28,7 @@ export function initMaster() {
     // Sort ascending. Expensive cast to BigInt but acceptable because we would
     // not need to do any sorting in a real-time environment
     master.sort((a, b) => {
-        return +(a.timestamp - b.timestamp).toString();
+        return nanoToMilli(a.timestamp) - nanoToMilli(b.timestamp);
     });
 
     console.log("Master initialized and sorted");

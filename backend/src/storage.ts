@@ -60,7 +60,7 @@ export async function getAllMessages(): Promise<Message[]> {
                 orderID: message.order_id,
                 direction: <Direction>message.direction,
                 type: <MessageType>message.type,
-                timestamp: BigInt(message.timestamp),
+                timestamp: message.timestamp,
                 symbol: message.symbol,
                 price: message.price
             });

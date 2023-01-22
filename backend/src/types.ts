@@ -16,7 +16,7 @@ export type Message = {
     orderID: string;
     direction: Direction;
     type: MessageType;
-    timestamp: bigint;
+    timestamp: string;
     symbol: string;
     price: number;
 }
@@ -25,28 +25,27 @@ export enum OrderStatus {
     Unresolved = "Unresolved",
     Cancelled = "Cancelled",
     Executed = "Executed",
-    ExecutedAndCancelled = "ExecutedAndCancelled",
 }
 
-export enum Abnormaility {
+export enum AbnormailityType {
     None = "None",
     NoNewOrderRequest = "NoNewOrderRequest",
     MultipleExecutions = "MultipleExecutions",
+    CancelledAfterExecution = "CancelledAfterExecution",
 }
 
 export type Order = {
     orderID: string;
     status: OrderStatus;
-    abnormaility: Abnormaility;
+    abnormailityType: AbnormailityType;
+    timestamp: string;
     life: number;
 }
 
 export type Block = {
+    timestamp: string;
     executions: number;
     cancellations: number;
-    abnormalities: {
-        NoNewOrderRequest: number;
-        MultipleExecutions: number;
-    };
-    averageRequestLife: number;
+    abnormalities: Order[];
+    averageOrderLife: number;
 }
