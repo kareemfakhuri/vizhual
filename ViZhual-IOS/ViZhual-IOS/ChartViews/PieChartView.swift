@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(OSX 10.15, *)
-public struct MyPieChartView: View {
+public struct PieChartView: View {
     public let values: [Double]
     public let names: [String]
     public let formatter: (Double) -> String
@@ -34,7 +34,7 @@ public struct MyPieChartView: View {
         return tempSlices
     }
     
-    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = .white, widthFraction: CGFloat = 1, innerRadiusFraction: CGFloat = 1){
+    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = Color(red: 21 / 255, green: 24 / 255, blue: 30 / 255, opacity: 1.0), widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60){
         self.values = values
         self.names = names
         self.formatter = formatter
@@ -49,7 +49,7 @@ public struct MyPieChartView: View {
         GeometryReader { geometry in
             VStack{
                 ZStack{
-                    ForEach(self.values.indices, id: \.self) { i in
+                    ForEach(0..<self.values.count){ i in
                         PieSlice(pieSliceData: self.slices[i])
                             .scaleEffect(self.activeIndex == i ? 1.03 : 1)
                             .animation(Animation.spring())
@@ -88,10 +88,9 @@ public struct MyPieChartView: View {
                     VStack {
                         Text(self.activeIndex == -1 ? "Total" : names[self.activeIndex])
                             .font(.title)
-                            .foregroundColor(Color.gray)
+                            .foregroundColor(Color.black)
                         Text(self.formatter(self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]))
                             .font(.title)
-                            .foregroundColor(Color.black)
                     }
                     
                 }
@@ -105,7 +104,7 @@ public struct MyPieChartView: View {
 @available(OSX 10.15.0, *)
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "%.2f", value)})
+        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "$%.2f", value)})
     }
 }
 

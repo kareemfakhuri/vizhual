@@ -17,62 +17,65 @@ struct summeryView: View {
     @State var abnormalities = [Order]()
     @State var averageOrderLifes: [Double] = [0]
     
-    @State var noNewOrderRequestAbnormalitiesCount = 0
-    @State var multipleExecutionsAbnormalitiesCount = 0
-    @State var cancelledAfterExecutionAbnormalitiesCount = 0
-
-    @State var transactionCounts = [Double]()
-
+    @State var transactionNames = [String]()
+    @State var transactionValues = [Double]()
+    @State var transactionColors = [Color]()
+    @State var barChartData = [(String, Double, Color)]()
+    
     var body: some View {
-        ScrollView{
-            VStack(alignment: .center) {
+        GeometryReader { geometry in
+            ScrollView{
+                VStack {
+                    VStack(alignment: .leading){
+                        HStack(alignment: .center){
+                            Text("Average Lifetime")
+                                .font(.title)
+                                .fontWeight(.bold)
+                            Spacer()
+                            Toggle("Live", isOn: $lifetimeLive)
+                                .toggleStyle(.button)
+                                .tint(.red)
+                        }
+                        MyLineView(live: lifetimeLive, demoData: $averageOrderLifes)
+                    }
+                    .modifier(CardModifier())
+                    .padding([.leading, .trailing, .top], 16)
+                    
+                    
                     VStack(alignment: .leading){
                         Text("Status Summary")
                             .font(.title)
                             .fontWeight(.bold)
-                        MyPieChart(demoData: $transactionCounts, titles: ["Successful", "Cancel"])
+                        PieChartView(values: transactionValues, names: transactionNames, formatter:  {value in String(format: "%.2f", value)}, colors: transactionColors, backgroundColor: .clear)
+                            .frame(height: 300,alignment: .center)
                     }
                     .modifier(CardModifier())
-
-                
-                VStack(alignment: .leading){
-                    HStack(alignment: .center){
-                        Text("Abnormal Types")
-                            .font(.title)
-                            .fontWeight(.bold)
-                        Spacer()
-                        NavigationLink {
-                            tableView(items: $abnormalities)
-                        } label: {
-                            Text("View table")
+                    .padding([.leading, .trailing], 16)
+                    
+                    VStack(alignment: .center){
+                        HStack(alignment: .center){
+                            Text("Abnormal Types")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.leading)
+                            Spacer()
+                            NavigationLink {
+                                tableView(items: $abnormalities)
+                            } label: {
+                                Text("View Table")
+                            }
                         }
                         
+                        BarChart(data: $barChartData)
+                            .frame(maxWidth: UIScreen.main.bounds.width - 32)
                     }
-                    
-                    
-//                    BarChartView(data: ChartData(values: [(AbnormailityType.NoNewOrderRequest.rawValue, noNewOrderRequestAbnormalitiesCount), (AbnormailityType.MultipleExecutions.rawValue, multipleExecutionsAbnormalitiesCount), (AbnormailityType.CancelledAfterExecution.rawValue, cancelledAfterExecutionAbnormalitiesCount)]), title: "", form: ChartForm.large)
-                    
+                    .modifier(CardModifier())
+                    .padding([.leading, .trailing, .bottom], 16)
                 }
-                .modifier(CardModifier())
-                
-                VStack(alignment: .leading){
-                    HStack(alignment: .center){
-                        Text("Average Lifetime")
-                            .font(.title)
-                            .fontWeight(.bold)
-                        Spacer()
-                        Toggle("Live", isOn: $lifetimeLive)
-                            .toggleStyle(.button)
-                            .tint(.red)
-                    }
-                    MyLineView(live: lifetimeLive, demoData: $averageOrderLifes)
-                }
-                .modifier(CardModifier())
             }
-            .padding()
-        }
-        .onReceive(timer) { _ in
-            callAPI()
+            .onReceive(timer) { _ in
+                callAPI()
+            }
         }
     }
     
@@ -93,19 +96,30 @@ struct summeryView: View {
                 print(block)
                 blocks.append(block)
                 abnormalities += block.abnormalities
+                abnormalities = abnormalities.filter({$0.abnormailityType != .CancelledAfterExecution})
                 averageOrderLifes = blocks.compactMap({$0.averageOrderLife})
-
+                
                 var executions = blocks.compactMap({$0.executions})
                 var cancellations = blocks.compactMap({$0.cancellations})
-
+                
                 executions = executions.count > 100 ? executions.suffix(100) : executions
                 cancellations = cancellations.count > 100 ? cancellations.suffix(100) : cancellations
-
-                transactionCounts = [Double(executions.reduce(0, +)), Double(cancellations.reduce(0, +))]
                 
-                noNewOrderRequestAbnormalitiesCount = block.abnormalities.filter({$0.abnormailityType == .NoNewOrderRequest}).count
-                multipleExecutionsAbnormalitiesCount = block.abnormalities.filter({$0.abnormailityType == .MultipleExecutions}).count
-                cancelledAfterExecutionAbnormalitiesCount = block.abnormalities.filter({$0.abnormailityType == .CancelledAfterExecution}).count
+                transactionNames = ["Successful", "Cancel"]
+                transactionValues = [Double(executions.reduce(0, +)), Double(cancellations.reduce(0, +))]
+                transactionColors = [.green, .orange]
+                
+                
+                var noNewOrderRequestAbnormalities = abnormalities.filter({$0.abnormailityType == .NoNewOrderRequest})
+                noNewOrderRequestAbnormalities = noNewOrderRequestAbnormalities.count > 100 ? noNewOrderRequestAbnormalities.suffix(100) : noNewOrderRequestAbnormalities
+                let noNewOrderRequestAbnormalitiesCount = Double(noNewOrderRequestAbnormalities.count)
+                
+                var multipleExecutionsAbnormalities = abnormalities.filter({$0.abnormailityType == .MultipleExecutions})
+                multipleExecutionsAbnormalities = multipleExecutionsAbnormalities.count > 100 ? multipleExecutionsAbnormalities.suffix(100) : multipleExecutionsAbnormalities
+                let multipleExecutionsAbnormalitiesCount = Double(multipleExecutionsAbnormalities.count)
+                
+                
+                barChartData = [(AbnormailityType.NoNewOrderRequest.value, noNewOrderRequestAbnormalitiesCount, AbnormailityType.NoNewOrderRequest.color), (AbnormailityType.MultipleExecutions.value, multipleExecutionsAbnormalitiesCount, AbnormailityType.MultipleExecutions.color)]
             }
         }
         
