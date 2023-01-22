@@ -12,29 +12,28 @@ struct summeryView: View {
     @State private var lifetimeLive = true
     
     // Create a Timer object with a 50ms interval
-    var timer = Timer.publish(every: 0.05, on: .main, in: .common).autoconnect()
+    var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @State var blocks = [Block]()
     @State var abnormalities = [Order]()
-    @State var executions = 0
-    @State var cancelations = 0
-    @State var averageOrderLifes = [Double]()
+    @State var averageOrderLifes: [Double] = [0]
     
     @State var noNewOrderRequestAbnormalitiesCount = 0
     @State var multipleExecutionsAbnormalitiesCount = 0
     @State var cancelledAfterExecutionAbnormalitiesCount = 0
 
+    @State var transactionCounts = [Double]()
 
     var body: some View {
         ScrollView{
             VStack(alignment: .center) {
-                VStack(alignment: .leading){
-                    Text("Status Summary")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    MyPieChart(demoData: [executions, blocks.first?.cancellations ?? 12, abnormalities.count], titles: ["Successful", "Cancel", "Abnormal"])
-                }
-                .modifier(CardModifier())
-                
+                    VStack(alignment: .leading){
+                        Text("Status Summary")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        MyPieChart(demoData: $transactionCounts, titles: ["Successful", "Cancel"])
+                    }
+                    .modifier(CardModifier())
+
                 
                 VStack(alignment: .leading){
                     HStack(alignment: .center){
@@ -43,20 +42,22 @@ struct summeryView: View {
                             .fontWeight(.bold)
                         Spacer()
                         NavigationLink {
-                            tableView()
+                            tableView(items: $abnormalities)
                         } label: {
                             Text("View table")
                         }
                         
                     }
-                    BarChartView(data: ChartData(values: [(AbnormailityType.NoNewOrderRequest.rawValue, 89), (AbnormailityType.MultipleExecutions.rawValue, 89), (AbnormailityType.CancelledAfterExecution.rawValue, 89)]), title: "", form: ChartForm.large)
+                    
+                    
+//                    BarChartView(data: ChartData(values: [(AbnormailityType.NoNewOrderRequest.rawValue, noNewOrderRequestAbnormalitiesCount), (AbnormailityType.MultipleExecutions.rawValue, multipleExecutionsAbnormalitiesCount), (AbnormailityType.CancelledAfterExecution.rawValue, cancelledAfterExecutionAbnormalitiesCount)]), title: "", form: ChartForm.large)
                     
                 }
                 .modifier(CardModifier())
                 
                 VStack(alignment: .leading){
                     HStack(alignment: .center){
-                        Text("Average lifetime")
+                        Text("Average Lifetime")
                             .font(.title)
                             .fontWeight(.bold)
                         Spacer()
@@ -93,8 +94,18 @@ struct summeryView: View {
                 blocks.append(block)
                 abnormalities += block.abnormalities
                 averageOrderLifes = blocks.compactMap({$0.averageOrderLife})
-                executions = blocks.compactMap({$0.executions}).reduce(0, +)
-                cancelations = blocks.compactMap({$0.cancellations}).reduce(0, +)
+
+                var executions = blocks.compactMap({$0.executions})
+                var cancellations = blocks.compactMap({$0.cancellations})
+
+                executions = executions.count > 100 ? executions.suffix(100) : executions
+                cancellations = cancellations.count > 100 ? cancellations.suffix(100) : cancellations
+
+                transactionCounts = [Double(executions.reduce(0, +)), Double(cancellations.reduce(0, +))]
+                
+                noNewOrderRequestAbnormalitiesCount = block.abnormalities.filter({$0.abnormailityType == .NoNewOrderRequest}).count
+                multipleExecutionsAbnormalitiesCount = block.abnormalities.filter({$0.abnormailityType == .MultipleExecutions}).count
+                cancelledAfterExecutionAbnormalitiesCount = block.abnormalities.filter({$0.abnormailityType == .CancelledAfterExecution}).count
             }
         }
         

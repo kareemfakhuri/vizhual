@@ -26,6 +26,7 @@ struct Order: Codable {
     let status: OrderStatus
     let abnormailityType: AbnormailityType
     let timestamp: String
+    let symbol: String
     let life: Int
 }
 

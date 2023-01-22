@@ -19,22 +19,11 @@ struct Item: Identifiable {
 
 struct tableView: View {
     
-    let items = [
-        Item(price: 2.07, symbol: "APL", time: "2023-06-02 12:23:34", type: "MT"),
-        Item(price: 2.07, symbol: "NHL", time: "2023-06-02 12:23:34", type: "NNR"),
-        Item(price: 2.07, symbol: "PSI", time: "2023-06-02 12:23:34", type: "MT"),
-        Item(price: 2.07, symbol: "TSN", time: "2023-06-02 12:23:34", type: "MT"),
-        Item(price: 2.07, symbol: "MSK", time: "2023-06-02 12:23:34", type: "NNR"),
-        Item(price: 2.07, symbol: "MSN", time: "2023-06-02 12:23:34", type: "MT")
-    ]
+    @Binding var items: [Order]
     
     var body: some View {
         List {
             HStack {
-                Text("Price")
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
-                    .background(Color.gray)
-                    .cornerRadius(8)
                 Text("Symbol")
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50, alignment: .center)
                     .background(Color.gray)
@@ -47,9 +36,9 @@ struct tableView: View {
             .shadow(radius: 2)
             
             
-            ForEach(items, id: \.id) { item in
+            ForEach(items, id: \.orderID) { item in
                 VStack {
-                    Text(item.time)
+                    Text(item.timestamp)
                         .minimumScaleFactor(0.9)
                         .multilineTextAlignment(.center)
                         .padding()
@@ -57,14 +46,6 @@ struct tableView: View {
                         .background(Color.white)
                         .cornerRadius(8)
                     HStack {
-                        Text("\(item.price)")
-                            .minimumScaleFactor(0.9)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                            .multilineTextAlignment(.center)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30, maxHeight: 30, alignment: .center)
-                            .background(Color.white)
-                            .cornerRadius(8)
                         Text(item.symbol)
                             .minimumScaleFactor(0.9)
                             .multilineTextAlignment(.center)
@@ -73,7 +54,7 @@ struct tableView: View {
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 30, maxHeight: 30, alignment: .center)
                             .background(Color.white)
                             .cornerRadius(8)
-                        Text(item.type)
+                        Text(item.abnormailityType.rawValue)
                             .minimumScaleFactor(0.9)
                             .multilineTextAlignment(.center)
                             .padding()
@@ -90,6 +71,6 @@ struct tableView: View {
 
 struct tableView_Previews: PreviewProvider {
     static var previews: some View {
-        tableView()
+        tableView(items: .constant([Order(orderID: "kasfhsdkh", status: .Cancelled, abnormailityType: .NoNewOrderRequest, timestamp: "22:30", symbol: "APL", life: 12)]))
     }
 }

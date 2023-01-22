@@ -9,16 +9,17 @@ import SwiftUI
 import SwiftUICharts
 
 struct MyPieChart: View {
-    @State var demoData: [Int] = [8, 23]
+    @Binding var demoData: [Double]
     @State var titles = ["S1", "S2"]
     
     
     var body: some View {
         VStack(alignment: .center) {
-            PieChartView(
+            
+            MyPieChartView(
                 values: demoData,
                 names: titles,
-                formatter: {value in String(format: "%.2f", value)})
+                formatter: {value in String(format: "%.2f", value)}, colors: [.green, .orange])
             .frame(height: 300,alignment: .center)
          }
     }
@@ -26,6 +27,6 @@ struct MyPieChart: View {
 
 struct MyPieChart_Previews: PreviewProvider {
     static var previews: some View {
-        MyPieChart()
+        MyPieChart(demoData: .constant([8, 12]))
     }
 }

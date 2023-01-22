@@ -26,6 +26,7 @@
 		BB8F6AC5297D0F1100537413 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AC4297D0F1100537413 /* PasswordGenerator.swift */; };
 		BB8F6AC8297D263500537413 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AC7297D263500537413 /* BannerView.swift */; };
 		BB8F6ACB297D38D900537413 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6ACA297D38D900537413 /* Models.swift */; };
+		BB8F6ACD297D70F100537413 /* MultiLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6ACC297D70F100537413 /* MultiLineChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		BB8F6AC4297D0F1100537413 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		BB8F6AC7297D263500537413 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		BB8F6ACA297D38D900537413 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		BB8F6ACC297D70F100537413 /* MultiLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				BB8F6AB6297CCBE000537413 /* MyPieChart.swift */,
 				BB8F6AB4297CCBE000537413 /* PieChartView.swift */,
 				BB8F6AB5297CCBE000537413 /* PieSliceView.swift */,
+				BB8F6ACC297D70F100537413 /* MultiLineChartView.swift */,
 			);
 			path = ChartViews;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				BB8F6AC8297D263500537413 /* BannerView.swift in Sources */,
 				902D30FC297CCC4100E9FF6A /* pricesView.swift in Sources */,
 				BB8F6AB8297CCBE000537413 /* PieChartView.swift in Sources */,
+				BB8F6ACD297D70F100537413 /* MultiLineChartView.swift in Sources */,
 				BB8F6ABA297CCBE000537413 /* MyPieChart.swift in Sources */,
 				BB8F6AA9297CCB8200537413 /* ContentView.swift in Sources */,
 				902D3104297CD52900E9FF6A /* appModel.swift in Sources */,

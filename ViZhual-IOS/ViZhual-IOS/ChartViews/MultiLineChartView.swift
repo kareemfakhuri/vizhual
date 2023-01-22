@@ -5,4 +5,11 @@
 //  Created by Alireza Toghiani on 1/22/23.
 //
 
-import Foundation
+import SwiftUI
+import Charts
+
+struct AbnormalData: Identifiable, Hashable {
+    var id = UUID()
+    var abnormalType: String
+    var value: Int
+}
