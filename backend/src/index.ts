@@ -31,10 +31,11 @@ if (
 }
 
 import { setupMySQL } from "./storage";
-import * as stream from "./stream";
+import { initMaster, streamMessages } from "./stream";
+import { autoDeleteStaleMessages, loadMessages, processMessage } from "./registry";
+import { startServer } from "./server";
 
 async function main () {
-    stream.initMaster();
     await setupMySQL(
         MYSQL_HOST!,
         +MYSQL_PORT!,
@@ -44,9 +45,15 @@ async function main () {
         +MYSQL_CONN_LIMIT!
     );
 
-    let i = 1;
-    stream.streamMessages((message) => {
-        console.log(i++);
-    });
+    // Must delete stale messages before loading them into memory (This effectively
+    // does nothing but clear the database when dealing with the dummy data)
+    await autoDeleteStaleMessages();
+    await loadMessages();
+
+    startServer();
+
+    // Fake stream logic
+    initMaster();
+    streamMessages(processMessage);
 }
 main();

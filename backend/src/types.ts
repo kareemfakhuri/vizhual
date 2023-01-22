@@ -1,6 +1,6 @@
 export enum Direction {
-    NBFToExchange,
-    ExchangeToNBF,
+    NBFToExchange = "NBFToExchange",
+    ExchangeToNBF = "ExchangeToNBF",
 }
 
 export enum MessageType {
@@ -13,10 +13,39 @@ export enum MessageType {
 }
 
 export type Message = {
-    orderID: string,
-    direction: Direction,
-    type: MessageType,
-    timestamp: string,
+    orderID: string;
+    direction: Direction;
+    type: MessageType;
+    timestamp: string;
     symbol: string;
-    price: number
+    price: number;
+}
+
+export enum OrderStatus {
+    Unresolved = "Unresolved",
+    Cancelled = "Cancelled",
+    Executed = "Executed",
+}
+
+export enum AbnormailityType {
+    None = "None",
+    NoNewOrderRequest = "NoNewOrderRequest",
+    MultipleExecutions = "MultipleExecutions",
+    CancelledAfterExecution = "CancelledAfterExecution",
+}
+
+export type Order = {
+    orderID: string;
+    status: OrderStatus;
+    abnormailityType: AbnormailityType;
+    timestamp: string;
+    life: number;
+}
+
+export type Block = {
+    timestamp: string;
+    executions: number;
+    cancellations: number;
+    abnormalities: Order[];
+    averageOrderLife: number;
 }

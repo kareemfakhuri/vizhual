@@ -4,7 +4,7 @@ import * as fs from "fs";
 import { DUMMY_DATA_DIR } from "./constants";
 import { Message } from "./types";
 import { wait } from "./utils/async-utils";
-import { convertTimestamp } from "./utils/conversion-utils";
+import { nanoToMilli } from "./utils/conversion-utils";
 
 const master: Message[] = [];
 
@@ -28,20 +28,22 @@ export function initMaster() {
     // Sort ascending. Expensive cast to BigInt but acceptable because we would
     // not need to do any sorting in a real-time environment
     master.sort((a, b) => {
-        return +(BigInt(a.timestamp) - BigInt(b.timestamp)).toString();
+        return nanoToMilli(a.timestamp) - nanoToMilli(b.timestamp);
     });
+
+    console.log("Master initialized and sorted");
 }
 
 export async function streamMessages(callback: (message: Message) => void | Promise<void>, speedFactor: number = 1) {
     // All stream processes in microseconds because setTimeout does not support nanoseconds
     let index = 0;
     let nextMessage = master[index];
-    let pointer = convertTimestamp(nextMessage.timestamp);
+    let pointer = nanoToMilli(nextMessage.timestamp);
 
     while (index !== master.length) {
         const startTime = Date.now();
 
-        while (nextMessage !== undefined && convertTimestamp(nextMessage.timestamp) < pointer) {
+        while (nextMessage !== undefined && nanoToMilli(nextMessage.timestamp) < pointer) {
             callback(nextMessage);
             index++;
             nextMessage = master[index];
