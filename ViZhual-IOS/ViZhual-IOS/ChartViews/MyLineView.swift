@@ -9,16 +9,19 @@ import SwiftUI
 import SwiftUICharts
 
 struct MyLineView: View {
+    var title: String?
+    var legend: String?
+    
     @State var demoData: [Double] = []
     @State var count = 0
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 0.2, on: .main, in: .common).autoconnect()
     
     var body: some View {
             VStack {
-                LineView(data: demoData, title: "Line", legend: "Full screen", style: Styles.lineChartStyleOne)
-                    .animation(.linear(duration: 1), value: count)
+                LineView(data: demoData, title: title, legend: legend, style: Styles.lineChartStyleOne)
+                    .frame(height: 350)
+
             }
-            .padding()
             .onReceive(timer) { _ in
                 self.count += 1
                 demoData.append(Double.random(in: 1...20))

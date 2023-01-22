@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct pricesView: View {
+    @State private var selectedStrength = "Mild"
+    let strengths = ["Mild", "Medium", "Mature"]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center){
+            Picker("Strength", selection: $selectedStrength) {
+                ForEach(strengths, id: \.self) {
+                    Text($0)
+                }
+            }
+            
+            VStack(alignment: .leading){
+                MyLineView(title: selectedStrength)
+            }
+            .modifier(CardModifier())
+        }
+        .padding()
+        
     }
 }
 
