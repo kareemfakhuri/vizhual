@@ -9,7 +9,7 @@ import SwiftUI
 
 @available(OSX 10.15, *)
 public struct PieChartView: View {
-    public let values: [Double]
+    public let values: [Int]
     public let names: [String]
     public let formatter: (Double) -> String
     
@@ -27,14 +27,14 @@ public struct PieChartView: View {
         var tempSlices: [PieSliceData] = []
         
         for (i, value) in values.enumerated() {
-            let degrees: Double = value * 360 / sum
+            let degrees: Double = Double(value * 360 / sum)
             tempSlices.append(PieSliceData(startAngle: Angle(degrees: endDeg), endAngle: Angle(degrees: endDeg + degrees), text: String(format: "%.0f%%", value * 100 / sum), color: self.colors[i]))
             endDeg += degrees
         }
         return tempSlices
     }
     
-    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = .white, widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60){
+    public init(values:[Int], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = .white, widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60){
         self.values = values
         self.names = names
         self.formatter = formatter
@@ -89,7 +89,7 @@ public struct PieChartView: View {
                         Text(self.activeIndex == -1 ? "Total" : names[self.activeIndex])
                             .font(.title)
                             .foregroundColor(Color.gray)
-                        Text(self.formatter(self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]))
+                        Text((self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]).description)
                             .font(.title)
                             .foregroundColor(Color.black)
                     }

@@ -25,6 +25,7 @@
 		BB8F6AC3297CFDDD00537413 /* common-passwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB8F6AC2297CFDDD00537413 /* common-passwords.txt */; };
 		BB8F6AC5297D0F1100537413 /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AC4297D0F1100537413 /* PasswordGenerator.swift */; };
 		BB8F6AC8297D263500537413 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AC7297D263500537413 /* BannerView.swift */; };
+		BB8F6ACB297D38D900537413 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6ACA297D38D900537413 /* Models.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		BB8F6AC2297CFDDD00537413 /* common-passwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "common-passwords.txt"; sourceTree = "<group>"; };
 		BB8F6AC4297D0F1100537413 /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		BB8F6AC7297D263500537413 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		BB8F6ACA297D38D900537413 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				BB8F6AA6297CCB8200537413 /* ViZhual_IOSApp.swift */,
 				BB8F6AA8297CCB8200537413 /* ContentView.swift */,
 				BB8F6AC7297D263500537413 /* BannerView.swift */,
+				BB8F6ACA297D38D900537413 /* Models.swift */,
 				BB8F6AC6297D107300537413 /* Security */,
 				BB8F6ABF297CCD7C00537413 /* ChartViews */,
 				902D30FF297CCC4500E9FF6A /* Views */,
@@ -218,6 +221,7 @@
 				902D30FE297CCC4100E9FF6A /* summeryView.swift in Sources */,
 				BB8F6AC1297CF94A00537413 /* PasswordManagerView.swift in Sources */,
 				BB8F6AC5297D0F1100537413 /* PasswordGenerator.swift in Sources */,
+				BB8F6ACB297D38D900537413 /* Models.swift in Sources */,
 				BB8F6AB9297CCBE000537413 /* PieSliceView.swift in Sources */,
 				902D30FD297CCC4100E9FF6A /* tableView.swift in Sources */,
 				BB8F6ABB297CCBE000537413 /* MyLineView.swift in Sources */,

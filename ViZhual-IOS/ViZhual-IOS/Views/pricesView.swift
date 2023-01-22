@@ -31,7 +31,7 @@ struct pricesView: View {
                         .toggleStyle(.button)
                                    .tint(.red)
                 }
-                MyLineView(live: priceLive)
+                MyLineView(live: priceLive, demoData: .constant([]))
             }
             .modifier(CardModifier())
         }
