@@ -23,7 +23,6 @@ struct MyPieChart: View {
                 names: ["S1", "S2"],
                 formatter: {value in String(format: "%.2f", value)})
          }
-        .padding()
         .onReceive(timer) { _ in
             self.count += 1
             demoData = [Double.random(in: 1...20), Double.random(in: 1...20)]

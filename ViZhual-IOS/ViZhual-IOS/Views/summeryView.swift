@@ -11,11 +11,30 @@ struct summeryView: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
+                VStack(alignment: .leading){
+                    Text("Result")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    MyPieChart()
+                }
+                .modifier(CardModifier())
                 
+                VStack(alignment: .leading){
+                    Text("Abnormal")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    MyPieChart()
+                }
+                .modifier(CardModifier())
             }
+//            .frame(height: UIScreen.main.bounds.height)
             
+            VStack(alignment: .leading){
+                MyLineView(title: "Ave. life")
+            }
+            .modifier(CardModifier())
         }
-        .padding(.horizontal)
+        .padding()
     }
 }
 

@@ -9,18 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        TabView{
-            summeryView()
-                .tabItem {
-                    Label("Summery", systemImage: "chart.pie.fill")
-                }
+        NavigationView {
             
-            pricesView()
-                .tabItem {
-                    Label("Prices", systemImage: "dollarsign.circle.fill")
-                }
+            TabView{
+                summeryView()
+                    .tabItem {
+                        Label("Summery", systemImage: "chart.pie.fill")
+                    }
+                
+                pricesView()
+                    .tabItem {
+                        Label("Prices", systemImage: "dollarsign.circle.fill")
+                    }
+            }
+            .accentColor(.red)
+            .navigationTitle("Vizhual")
         }
-        .accentColor(.red)
     }
 }
 
