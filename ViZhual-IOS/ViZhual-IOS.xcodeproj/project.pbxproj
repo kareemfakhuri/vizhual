@@ -28,7 +28,6 @@
 		902D30FA297CCC4100E9FF6A /* tableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tableView.swift; sourceTree = "<group>"; };
 		902D30FB297CCC4100E9FF6A /* summeryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = summeryView.swift; sourceTree = "<group>"; };
 		902D3100297CCE8C00E9FF6A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		902D3102297CD40C00E9FF6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		902D3103297CD52900E9FF6A /* appModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = appModel.swift; sourceTree = "<group>"; };
 		BB8F6AA3297CCB8200537413 /* ViZhual-IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ViZhual-IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB8F6AA6297CCB8200537413 /* ViZhual_IOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViZhual_IOSApp.swift; sourceTree = "<group>"; };
@@ -82,7 +81,6 @@
 		BB8F6AA5297CCB8200537413 /* ViZhual-IOS */ = {
 			isa = PBXGroup;
 			children = (
-				902D3102297CD40C00E9FF6A /* Info.plist */,
 				BB8F6AA6297CCB8200537413 /* ViZhual_IOSApp.swift */,
 				BB8F6AA8297CCB8200537413 /* ContentView.swift */,
 				BB8F6ABF297CCD7C00537413 /* ChartViews */,
