@@ -15,6 +15,7 @@
 		BB8F6AB9297CCBE000537413 /* PieSliceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB5297CCBE000537413 /* PieSliceView.swift */; };
 		BB8F6ABA297CCBE000537413 /* MyPieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB6297CCBE000537413 /* MyPieChart.swift */; };
 		BB8F6ABB297CCBE000537413 /* MyLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8F6AB7297CCBE000537413 /* MyLineView.swift */; };
+		BB8F6ABE297CCC5900537413 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = BB8F6ABD297CCC5900537413 /* SwiftUICharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB8F6ABE297CCC5900537413 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,9 @@
 			dependencies = (
 			);
 			name = "ViZhual-IOS";
+			packageProductDependencies = (
+				BB8F6ABD297CCC5900537413 /* SwiftUICharts */,
+			);
 			productName = "ViZhual-IOS";
 			productReference = BB8F6AA3297CCB8200537413 /* ViZhual-IOS.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +128,9 @@
 				Base,
 			);
 			mainGroup = BB8F6A9A297CCB8200537413;
+			packageReferences = (
+				BB8F6ABC297CCC5900537413 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = BB8F6AA4297CCB8200537413 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -355,6 +363,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BB8F6ABC297CCC5900537413 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BB8F6ABD297CCC5900537413 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BB8F6ABC297CCC5900537413 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BB8F6A9B297CCB8200537413 /* Project object */;
 }
