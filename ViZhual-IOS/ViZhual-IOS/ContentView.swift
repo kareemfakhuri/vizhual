@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            MyPieChart()
+        TabView{
+            summeryView()
+                .tabItem {
+                    Label("Summery", systemImage: "chart.pie.fill")
+                }
+            
+            pricesView()
+                .tabItem {
+                    Label("Prices", systemImage: "dollarsign.circle.fill")
+                }
         }
-        .padding()
     }
 }
 
