@@ -18,6 +18,11 @@ struct summeryView: View {
     @State var executions = 0
     @State var cancelations = 0
     @State var averageOrderLifes = [Double]()
+    
+    @State var noNewOrderRequestAbnormalitiesCount = 0
+    @State var multipleExecutionsAbnormalitiesCount = 0
+    @State var cancelledAfterExecutionAbnormalitiesCount = 0
+
 
     var body: some View {
         ScrollView{
@@ -33,7 +38,7 @@ struct summeryView: View {
                 
                 VStack(alignment: .leading){
                     HStack(alignment: .center){
-                        Text("Abnormal")
+                        Text("Abnormal Types")
                             .font(.title)
                             .fontWeight(.bold)
                         Spacer()
@@ -44,7 +49,8 @@ struct summeryView: View {
                         }
                         
                     }
-                    BarChartView(data: ChartData(values: [("", 89), ("", 89), ("", 89)]), title: "")
+                    BarChartView(data: ChartData(values: [(AbnormailityType.NoNewOrderRequest.rawValue, 89), (AbnormailityType.MultipleExecutions.rawValue, 89), (AbnormailityType.CancelledAfterExecution.rawValue, 89)]), title: "", form: ChartForm.large)
+                    
                 }
                 .modifier(CardModifier())
                 

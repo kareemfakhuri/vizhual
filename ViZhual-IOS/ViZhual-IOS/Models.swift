@@ -36,3 +36,13 @@ struct Block: Codable {
     let abnormalities: [Order]
     let averageOrderLife: Double
 }
+
+// MARK: - Price
+struct Price: Codable {
+    let orderID, direction, type: String
+    let timestamp: Double
+    let symbol: String
+    let price: Double
+}
+
+typealias Prices = [Price]
