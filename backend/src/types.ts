@@ -36,6 +36,7 @@ export enum AbnormailityType {
 
 export type Order = {
     orderID: string;
+    symbol: string;
     status: OrderStatus;
     abnormailityType: AbnormailityType;
     timestamp: string;

@@ -28,7 +28,12 @@ export async function setupMySQL(
   await setupTables();
 }
 
-async function setupTables(): Promise<void> {
+export async function dropTable(): Promise<void> {
+    pool.query(`DROP TABLE ${TABLE_NAME};`);
+}
+
+export async function setupTables(): Promise<void> {
+    await pool.query("SET sql_require_primary_key=0;");
     pool.query(`CREATE TABLE IF NOT EXISTS ${TABLE_NAME} (${TABLE_SIGNATURE});`);
 }
 

@@ -30,7 +30,7 @@ if (
   );
 }
 
-import { setupMySQL } from "./storage";
+import { dropTable, setupMySQL, setupTables } from "./storage";
 import { initMaster, streamMessages } from "./stream";
 import { autoDeleteStaleMessages, loadMessages, processMessage } from "./registry";
 import { startServer } from "./server";
@@ -47,7 +47,14 @@ async function main () {
 
     // Must delete stale messages before loading them into memory (This effectively
     // does nothing but clear the database when dealing with the dummy data)
-    await autoDeleteStaleMessages();
+
+    // I=== Temporary fix to make server restarts faster ===I
+    await dropTable();
+    await setupTables();
+    // await autoDeleteStaleMessages();
+    // I====================================================I
+
+
     await loadMessages();
 
     startServer();

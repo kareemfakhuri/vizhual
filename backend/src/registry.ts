@@ -19,12 +19,13 @@ export function getLastBlock(): Block | null {
 }
 
 export async function processMessage(message: Message): Promise<void> {
-    const { orderID } = message;
+    const { orderID, symbol } = message;
 
     switch (message.type) {
         case MessageType.NewOrderRequest: {
             unresolvedOrders.set(orderID, {
                 orderID,
+                symbol,
                 status: OrderStatus.Unresolved,
                 abnormailityType: AbnormailityType.None,
                 timestamp: milliToNano(Date.now()),
@@ -37,6 +38,7 @@ export async function processMessage(message: Message): Promise<void> {
             if (!unresolvedOrders.get(orderID)) {
                 currentBlockOrders.push({
                     orderID,
+                    symbol,
                     status: OrderStatus.Cancelled,
                     abnormailityType: AbnormailityType.NoNewOrderRequest,
                     timestamp: milliToNano(Date.now()),
@@ -47,6 +49,7 @@ export async function processMessage(message: Message): Promise<void> {
 
                 currentBlockOrders.push({
                     orderID,
+                    symbol,
                     status: OrderStatus.Cancelled,
                     abnormailityType: AbnormailityType.CancelledAfterExecution,
                     timestamp: order.timestamp,
@@ -59,6 +62,7 @@ export async function processMessage(message: Message): Promise<void> {
 
                 currentBlockOrders.push({
                     orderID,
+                    symbol,
                     status: OrderStatus.Cancelled,
                     abnormailityType: AbnormailityType.None,
                     timestamp: order.timestamp,
@@ -74,6 +78,7 @@ export async function processMessage(message: Message): Promise<void> {
             if (!unresolvedOrders.get(orderID)) {
                 currentBlockOrders.push({
                     orderID,
+                    symbol,
                     status: OrderStatus.Executed,
                     abnormailityType: AbnormailityType.NoNewOrderRequest,
                     timestamp: milliToNano(Date.now()),
@@ -84,6 +89,7 @@ export async function processMessage(message: Message): Promise<void> {
 
                 currentBlockOrders.push({
                     orderID,
+                    symbol,
                     status: OrderStatus.Cancelled,
                     abnormailityType: AbnormailityType.MultipleExecutions,
                     timestamp: order.timestamp,
@@ -96,6 +102,7 @@ export async function processMessage(message: Message): Promise<void> {
 
                 currentBlockOrders.push({
                     orderID,
+                    symbol,
                     status: OrderStatus.Executed,
                     abnormailityType: AbnormailityType.None,
                     timestamp: order.timestamp,
