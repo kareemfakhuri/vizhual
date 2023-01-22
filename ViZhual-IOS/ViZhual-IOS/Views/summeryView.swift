@@ -46,9 +46,7 @@ struct summeryView: View {
                         Text("Status Summary")
                             .font(.title)
                             .fontWeight(.bold)
-                        PieChartView(values: [12, 13], names: ["S", "SS"], formatter: { _ in
-                            return "FUCK SWIFT"
-                        }, colors: [.orange, .red], backgroundColor: .clear)
+                        PieChartView(values: transactionValues, names: transactionNames, formatter:  {value in String(format: "%.2f", value)}, colors: transactionColors, backgroundColor: .clear)
                             .frame(height: 300,alignment: .center)
                     }
                     .modifier(CardModifier())

@@ -88,7 +88,7 @@ public struct PieChartView: View {
                     VStack {
                         Text(self.activeIndex == -1 ? "Total" : names[self.activeIndex])
                             .font(.title)
-                            .foregroundColor(Color.gray)
+                            .foregroundColor(Color.black)
                         Text(self.formatter(self.activeIndex == -1 ? values.reduce(0, +) : values[self.activeIndex]))
                             .font(.title)
                     }
