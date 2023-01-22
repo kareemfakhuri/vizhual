@@ -9,7 +9,13 @@ import SwiftUI
 
 struct summeryView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center) {
+            HStack(alignment: .center) {
+                
+            }
+            
+        }
+        .padding(.horizontal)
     }
 }
 

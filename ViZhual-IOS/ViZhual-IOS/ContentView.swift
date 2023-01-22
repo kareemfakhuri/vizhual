@@ -20,6 +20,7 @@ struct ContentView: View {
                     Label("Prices", systemImage: "dollarsign.circle.fill")
                 }
         }
+        .accentColor(.red)
     }
 }
 
