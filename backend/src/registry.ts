@@ -141,10 +141,12 @@ function tick() {
 
     let executions = 0;
     let cancellations = 0;
-    let totalOrderLife = BigInt(0);
+    let averageOrderLife = 0;
     let abnormalities: Order[] = [];
 
     if (pointer.length > 0) {
+        let totalOrderLife = BigInt(0);
+
         pointer.forEach((order) => {
             if (order.status === OrderStatus.Executed) {
                 executions++;
@@ -159,18 +161,20 @@ function tick() {
             }
         });
 
-        blocks.push({
-            timestamp: milliToNano(Date.now()),
-            executions,
-            cancellations,
-            abnormalities,
-            averageOrderLife: +(totalOrderLife / BigInt(pointer.length)).toString()
-        });
+        averageOrderLife = +(totalOrderLife / BigInt(pointer.length)).toString();
+    }
 
-        // Remove first block if block cap is reached
-        if (blocks.length > BLOCK_COUNT) {
-            blocks.shift();
-        }
+    blocks.push({
+        timestamp: milliToNano(Date.now()),
+        executions,
+        cancellations,
+        abnormalities,
+        averageOrderLife
+    });
+
+    // Remove first block if block cap is reached
+    if (blocks.length > BLOCK_COUNT) {
+        blocks.shift();
     }
 
     // Step 2: Clear executed orders after enough time has passed
