@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(OSX 10.15, *)
-public struct PieChartView: View {
+public struct MyPieChartView: View {
     public let values: [Double]
     public let names: [String]
     public let formatter: (Double) -> String
@@ -34,7 +34,7 @@ public struct PieChartView: View {
         return tempSlices
     }
     
-    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = .white, widthFraction: CGFloat = 0.75, innerRadiusFraction: CGFloat = 0.60){
+    public init(values:[Double], names: [String], formatter: @escaping (Double) -> String, colors: [Color] = [Color.blue, Color.green, Color.orange], backgroundColor: Color = .white, widthFraction: CGFloat = 1, innerRadiusFraction: CGFloat = 1){
         self.values = values
         self.names = names
         self.formatter = formatter
@@ -49,7 +49,7 @@ public struct PieChartView: View {
         GeometryReader { geometry in
             VStack{
                 ZStack{
-                    ForEach(0..<self.values.count){ i in
+                    ForEach(self.values.indices, id: \.self) { i in
                         PieSlice(pieSliceData: self.slices[i])
                             .scaleEffect(self.activeIndex == i ? 1.03 : 1)
                             .animation(Animation.spring())
@@ -105,7 +105,7 @@ public struct PieChartView: View {
 @available(OSX 10.15.0, *)
 struct PieChartView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "%.2f", value)})
+        MyPieChartView(values: [1300, 500, 300], names: ["Rent", "Transport", "Education"], formatter: {value in String(format: "%.2f", value)})
     }
 }
 
