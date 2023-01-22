@@ -49,6 +49,30 @@ export async function saveMessages(messages: Message[]): Promise<void> {
     await pool.writeValues(TABLE_NAME, toSave);
 }
 
+export async function getTrades(symbol: string): Promise<Message[]> {
+    const result = await pool.readValues(TABLE_NAME, {
+        symbol,
+        type: MessageType.Trade
+    }, ["*"]);
+    
+    const messages: Message[] = [];
+
+    if (result) {
+        for (const message of result) {
+            messages.push({
+                orderID: message.order_id,
+                direction: <Direction>message.direction,
+                type: <MessageType>message.type,
+                timestamp: message.timestamp,
+                symbol: message.symbol,
+                price: message.price
+            });
+        }
+    }
+    
+    return messages;
+}
+
 export async function getAllMessages(): Promise<Message[]> {
     const result = await pool.query(`SELECT * FROM ${TABLE_NAME};`);
     
